@@ -1,0 +1,20 @@
+// Remove focus away from the hero as the user scrolls by making it darker
+const $mainHeader = $('main header')
+$mainHeader.css({
+  background: 'rgba(0, 0, 0, .5)'
+})
+
+const scrollFade = () => {
+  let winheight = $(window).height()
+  let scrollTop = $(window).scrollTop()
+  let trackLength = winheight - scrollTop
+  let opacity = (1 - (trackLength / winheight)) / 2
+  
+  $mainHeader.css({
+    background: `rgba(0, 0, 0, ${ .5 + opacity})`
+  })
+}
+
+$(window).on('scroll', () => {
+  scrollFade()
+})
